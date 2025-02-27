@@ -36,9 +36,9 @@ $frequenteFormulario = $_POST['frequente'];
 
 $imgFormulario = $_POST['img'];
 
-$inserte='INSERT INTO tb_info_alunos (telefone, email, nascimento, frequente, id_alunos, img) VALUE (:telefone, :email, :nascimento, :frequente, :id_alunos, :img)';
+$insert='INSERT INTO tb_info_alunos (telefone, email, nascimento, frequente, id_alunos, img) VALUE (:telefone, :email, :nascimento, :frequente, :id_alunos, :img)';
 
-$boxe = $banco->prepare($inserte);
+$boxe = $banco->prepare($insert);
 
 $boxe->execute([
     ':telefone' => $telefoneFormulario,
