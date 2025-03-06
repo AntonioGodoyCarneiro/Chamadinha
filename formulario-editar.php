@@ -28,7 +28,7 @@
 
 <main class="container text-center my-5">   
 
-    <h2>CADASTRAR ALUNO</h2>
+    <h2>EDITAR CADASTRO</h2>
     <br>
     
 
@@ -40,8 +40,34 @@
             Fala para onde deve enviar os dados
     -->
 
+        <?php 
+        
+            $id_aluno_alterar = $_GET['id_aluno_alterar'];
+            
+            var_dump($id_aluno_alterar);
 
-    <form action="./aluno-cadastrar.php" method="POST">
+
+            $dsn = 'mysql:dbname=db_chamadinha;host=127.0.0.1';
+            $user = 'root';
+            $password = '';
+
+            $banco = new PDO($dsn, $user, $password);
+
+            $select = "SELECT tb_info_alunos.*, tb_aluno.nome FROM tb_info_alunos INNER JOIN tb_aluno ON tb_aluno.id = tb_info_alunos.id_alunos WHERE tb_info_alunos.id_alunos= " . $id_aluno_alterar;
+
+            $dados = $banco->query($select)->fetch();
+
+            
+
+        ?>
+
+
+
+    <form action="./aluno-editar.php" method="POST">
+
+        <input type="hidden" name="id" value="<?=$dados['id']?>">
+
+        <img src="./img/<?= $dados['img'] ?>" alt=" ">
 
         <div class="col">
             <label for="img">imagem</label>
@@ -49,23 +75,23 @@
         </div>
 
         <label for="nome">Nome:</label class="form-control">
-        <input type="text"   class="form-control" name="nome">
+        <input type="text"   class="form-control" name="nome" value="<?=$dados['nome']?>">
         <div class="row mt-2 ">
 
             <div class="col">
                 <label for="telefone">Telefone:</label>
-                <input type="number"   class="form-control" name="tel">
+                <input type="number"   class="form-control" name="tel" value="<?=$dados['telefone']?>">
             </div>
 
             <div class="col">
                 <label for="email">Email:</label>
-                <input type="email"   class="form-control" name="email">
+                <input type="email"   class="form-control" name="email" value="<?=$dados['email']?>">
             </div>
         </div>
         <div class="row mt-2">
             <div class="col">
                 <label for="data_nascimento">Data de Nascimento:</label>
-                <input type="date"   class="form-control" name="nasc">
+                <input type="date"   class="form-control" name="nasc" value="<?=$dados['nascimento']?>">
             </div>
 
             <div class="col my-4 pt-2">
