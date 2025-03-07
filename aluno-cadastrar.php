@@ -33,7 +33,6 @@ $telefoneFormulario = $_POST['tel'];
 $emailFormulario = $_POST['email'];
 $nascimentoFormulario = $_POST['nasc'];
 $frequenteFormulario = $_POST['frequente'];
-
 $imgFormulario = $_POST['img'];
 
 $insert='INSERT INTO tb_info_alunos (telefone, email, nascimento, frequente, id_alunos, img) VALUE (:telefone, :email, :nascimento, :frequente, :id_alunos, :img)';

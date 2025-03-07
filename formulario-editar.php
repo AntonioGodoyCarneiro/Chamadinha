@@ -65,7 +65,7 @@
 
     <form action="./aluno-editar.php" method="POST">
 
-        <input type="hidden" name="id" value="<?=$dados['id']?>">
+        <input type="hidden" name="id" value="<?=$id_aluno_alterar?>">
 
         <img src="./img/<?= $dados['img'] ?>" alt=" ">
 
